@@ -7,13 +7,17 @@
 
 
 <script>
+import {mapActions} from 'vuex'
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
-import {reqFoodCategorys} from './api'
+
 export default{
-  mounted() {
-    const result1 = reqFoodCategorys()
-    console.log(result1)
-    // this.$store.dispatch('getAddress')
+  mounted() { 
+    //this.$store.dispatch('getAddress')  //异步操作 '    这是在更新状态 
+    this.getAddress()  //更新了 地址状态    默认的state内部是没有地址的    先更新了  就有
+  },
+
+  methods: {
+    ...mapActions(['getAddress'])
   },
 
   components: {

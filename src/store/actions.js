@@ -10,13 +10,14 @@ import {
     reqFoodCategorys,
     reqShops,
    
-  } from '../api'
+  } from '../api'  // 连接后台数据的api
 
 export default{
     // 异步获取地址
   async getAddress({commit, state}) {
     // 发送异步ajax请求
-    const geohash = state.latitude + ',' + state.longitude
+    const geohash = state.latitude + ',' + state.longitude // 经纬度的拼接  
+    // const geohash = 40.10038+','+116.36867
     const result = await reqAddress(geohash)
     // 提交一个mutation
     if (result.code === 0) {

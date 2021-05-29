@@ -1,4 +1,4 @@
-//更新state的对象   
+//更新state的对象      多个方法！！
 import {
   RECEIVE_ADDRESS,
   RECEIVE_CATEGORYS,
