@@ -3,8 +3,9 @@
             <ul class="shop_list" v-if="shops.length">
               <li class="shop_li border-1px" v-for="(shop,index) in shops" :key="index">
                 <a>
-                  <div class="shop_left">
-                    <img class="shop_img" :src="baseImgUrl1+shop.image_path">
+                  <div class="shop_left" >
+                    <img class="shop_img" src="./images/shop/4.jpg">
+
                   </div>
                   <div class="shop_right">
                     <section class="shop_detail_header">
@@ -16,13 +17,7 @@
                     </section>
                     <section class="shop_rating_order">
                       <section class="shop_rating_order_left">
-                        <div class="star star-24">
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item half"></span>
-                          <span class="star-item off"></span>
-                        </div>
+                        <Star :score="shop.rating" :size="24"></Star>
                         <div class="rating_section">
                           {{shop.rating}}
                         </div>
@@ -55,6 +50,7 @@
 </template>
 <script>
 import {mapState} from 'vuex'
+import Star from '../Star/Star1.vue'
 
 export default{
    data () {
@@ -65,8 +61,11 @@ export default{
 
    computed:{
     ...mapState(['shops',]) //封装 state的shops
-   }
-  
+   },
+  components:{
+    Star
+  },
+
 }
 </script>
 <style lang='stylus' rel='stylesheet/stylus'>
