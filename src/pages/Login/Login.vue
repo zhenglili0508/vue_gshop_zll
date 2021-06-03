@@ -140,6 +140,9 @@ export default{
     const {name,pwd,captcha}=this
     alert(this.captcha)
     alert(captcha)
+    alert(name)
+    alert(pwd)
+
      if(!this.name){
         // 没有指定用户名
         this.showAlertfun('没有指定用户名')
@@ -155,7 +158,10 @@ export default{
       }
     //密码登录  
     result = await reqPwdLogin({name, pwd, captcha})
+    console.log(result)
     }
+
+    
     //停止倒计时
     if(this.computeTime){
       this.computeTime = 0
@@ -166,6 +172,7 @@ export default{
     if(result.code==0){
           const user = result.data
         //将user保存在state
+        this.$store.dispatch('redordUser',user)
         //跳转到中心界面 
         this.$router.replace('/profile')
         }else{

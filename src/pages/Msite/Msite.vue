@@ -3,12 +3,14 @@
        <section class="msite">
         <!--首页头部-->
         <HeaderTop :title="address.name">
-          <span class="header_search" slot="left">
+          <router-link class="header_search" slot="left" to="/search">
             <i class="iconfont icon-sousuo"></i>
-          </span>
-          <span class="header_login" slot="right">
-            <span class="header_login_text">登录|注册</span>
-          </span>
+          </router-link>
+          <router-link class="header_login" slot="right" :to="userInfo._id ? '/userinfo':'/login'">
+            <span class="header_login_text" to="/search" v-if="!userInfo._id">登录|注册</span>
+            <span class="header_login_text" to="/search" v-else><i class="iconfont icon-person"></i></span>
+
+          </router-link>
         </HeaderTop>
         
         <!--首页导航-->
@@ -63,7 +65,7 @@ export default {
   },
 
   computed:{
-    ...mapState(['address','categorys']) ,//这里的address 是 state里面封装的address
+    ...mapState(['address','categorys','userInfo']) ,//这里的address 是 state里面封装的address
 
     categorysArr () {
       const {categorys} = this

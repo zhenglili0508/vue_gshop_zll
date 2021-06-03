@@ -10,6 +10,12 @@ import Order from '../pages/Order/Order.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import Login from '../pages/Login/Login.vue'
 
+import ShopGoods from '../pages/Shop/ShopGoods/ShopGoods.vue'
+import ShopInfo from '../pages/Shop/ShopInfo/ShopInfo.vue'
+import ShopRatings from '../pages/Shop/ShopRatings/ShopRatings.vue'
+import Shop from '../pages/Shop/Shop.vue'
+
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -51,7 +57,29 @@ export default new VueRouter({
           {
             path: '/login',
             component: Login,
-            
+          },
+          //shop
+          {
+            path: '/shop',
+            component: Shop,
+            children:[
+                      {
+                        path: '/shop/goods',
+                        component: ShopGoods,                       
+                      },
+                      {
+                        path: '/shop/info',
+                        component: ShopInfo,
+                      },
+                      {
+                        path: '/shop/ratings',
+                        component: ShopRatings,
+                      },
+                      {
+                        path: '',
+                        redirect: '/shop/goods'
+                      },
+            ]
           },
 
      //路由配置结束部分       
