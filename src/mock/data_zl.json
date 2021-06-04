@@ -3,13 +3,19 @@
         {
             "name": "xxxxx",
             "food": [
-                {
+                { 
                     "name":"yyyy",
                     "price" :9
 
                 }
             ]
         }
+    ],
+    "ratings":[
+
+    ],
+    "info":[
+
     ]
 
 }
