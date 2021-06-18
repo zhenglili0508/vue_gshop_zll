@@ -53,9 +53,10 @@ export default{
       // food.count = 1  //新增的属性  （没有数据绑定效果）
       /* 对象 属性 属性值 */      
       Vue.set(food,"count",1)  // 注意 count 是属性名  所以要加“”
+      state.cartFoods.push(food)  
     }else{
     //增加food的数量 
-      food.count++
+      food.count++ 
     }
   },
 
@@ -63,6 +64,9 @@ export default{
     //减少food的数量 
     if(food.count){
       food.count--
+      if(food.count===0){
+        state.cartFoods.splice(state.cartFoods.indexOf(food),1)
+      }
     }
   },
 

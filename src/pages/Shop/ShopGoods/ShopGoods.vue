@@ -42,34 +42,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="food-list food-list-hook">
-                    <h1 class="title">香浓甜粥</h1>
-                    <ul>
-                    <li class="food-item bottom-border-1px">
-                    <div class="icon">
-                    <img width="57" height="57"
-                    src="http://fuss10.elemecdn.com/6/72/cb844f0bb60c502c6d5c05e0bddf5jpeg.jpeg?imageView2/1/w/114/h/114">
-                    </div>
-                    <div class="content">
-                    <h2 class="name">红枣山药粥</h2>
-                    <p class="desc">红枣山药糙米粥,素材包</p>
-                    <div class="extra">
-                    <span class="count">月售 17 份</span>
-                    <span>好评率 100%</span>
-                    </div>
-                    <div class="price">
-                    <span class="now">￥29</span>
-                    <span class="old">￥36</span>
-                    </div>
-                    <div class="cartcontrol-wrapper">
-                    CartControl
-                    </div>
-                    </div>
-                </li>
-            </ul>
-                    </li>
+                  
                 </ul>
             </div>
+
+            <ShopCart></ShopCart>
         </div>
         <Food :food="food" ref="food"></Food>
 </div>
@@ -78,6 +55,7 @@
 import BScroll from 'better-scroll'
 import CartControl from '../../../components/CartControl/CartControl.vue'
 import Food from '../../../components/Food/Food.vue'
+import ShopCart from '../../../components/ShopCart/ShopCart.vue'
 import {mapState} from 'vuex'
 export default{
     data() {
@@ -131,11 +109,11 @@ export default{
             })
             //给右侧 的绑定监听     'scroll' 是参数 表示绑定什么样的监听   当滚动的时候就触发
              this.foodsScroll.on('scroll',({x,y})=>{
-                console.log(x,y)
+                // console.log(x,y)
                 this.scrollY = Math.abs(y)  //收集 坐标 
             })
              this.foodsScroll.on('scrollEnd',({x,y})=>{   //防止 惯性滑动    直接得到最后坐标   
-                console.log("scrollEnd"+x,y)
+                // console.log("scrollEnd"+x,y)
                 this.scrollY = Math.abs(y)  //收集 坐标 
             })
 
@@ -160,7 +138,7 @@ export default{
         },
         //点击分类  右侧滑动 
         clickMenuItem(index){
-            console.log(index)
+            // console.log(index)
             const scrollY = this.tops[index]
             this.scrollY = scrollY   // 立即更新当前分类   点到哪里  哪里就变绿色   不然会延迟 
             this.foodsScroll.scrollTo(0,-scrollY,1)  //平滑滚动右侧列表 
@@ -178,7 +156,8 @@ export default{
 
   components:{
     CartControl,
-    Food
+    Food,
+    ShopCart
   }
 
 }
