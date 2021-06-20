@@ -11,6 +11,7 @@ import {
   RECEIVE_INFO,
   INCREMENT_FOOD_COUNT, 
   DECREMENT_FOOD_COUNT,
+  CLEAR_CART,
 
 } from './mutations_types'
 export default{
@@ -69,5 +70,16 @@ export default{
       }
     }
   },
+
+
+  [CLEAR_CART](state){
+    //清除food中的count 
+    state.cartFoods.forEach(food => {
+      food.count = 0
+    })
+    //移除购物车中的购物项
+    state.cartFoods = []
+  },
+  
 
 }

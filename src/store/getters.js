@@ -8,4 +8,7 @@ export default{
     return state.cartFoods.reduce((preTotal,food)=> preTotal+food.count*food.price,0)
   },
 
+  positiveSize(state){   //用户评价为满意的 
+    return state.ratings.reduce((preTotal,rating)=> preTotal+(rating.rateType === 0),0)
+  }, 
 }
