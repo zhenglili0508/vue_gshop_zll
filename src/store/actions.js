@@ -11,6 +11,7 @@ import {
     INCREMENT_FOOD_COUNT,
     DECREMENT_FOOD_COUNT,
     CLEAR_CART,
+    RECEIVE_SEARCH_SHOPS
 
   } from './mutations_types'
 
@@ -23,6 +24,7 @@ import {
     reqShopGoods,
     reqShopInfo,
     reqShopRatings,
+    reqSearchShop
   } from '../api'  // 连接后台数据的api
 
 export default{
@@ -126,4 +128,15 @@ export default{
   clearCart({commit}){
       commit(CLEAR_CART)
   },
+
+  async SearchShops({commit,state},keyword) {
+    const geohash = state.latitude + ',' + state.longitude // 经纬度的拼接  
+    const result = await reqSearchShop(geohash, keyword)
+    if (result.code === 0) {
+      const searchShops = result.data 
+      commit(RECEIVE_SEARCH_SHOPS, {searchShops})
+    }
+  },
+
+  
 }

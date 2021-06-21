@@ -61,22 +61,42 @@ export default{
       }
     },
     mounted() {
-        new BScroll('.shop-info')
+          if(!this.info.pics) {
+                return
+            }
 
-        const ul = this.$refs.picsUl
-        const liWidth = 120
-        const space = 6
-        const count1 = this.info.pics.length
-        ul.style.width = (liWidth + space) * count1 -space + 'px'
 
-        new BScroll('.pic-wrapper'),{ 
-            scrollX :true
-        }
+        this._initScroll()
 
     },
     computed:{
         ...mapState(['info',]),
+    },
+
+    methods: {
+      _initScroll () {
+        new BScroll('.shop-info')
+        // 动态计算ul的宽度
+        const ul = this.$refs.picsUl
+        const liWidth = 120
+        const space = 6
+        const count = this.info.pics.length
+        ul.style.width = (liWidth + space) * count -space + 'px'
+
+        new BScroll('.pic-wrapper', {
+          scrollX: true // 水平滑动
+        })
+      }
+    },
+
+     watch: {
+      info () {// 刷新流程--> 更新数据
+        this.$nextTick(() => {
+          this._initScroll()
+        })
+      }
     }
+
 }
 </script>
 <style lang='stylus' rel='stylesheet/stylus'>

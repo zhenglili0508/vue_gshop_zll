@@ -22,7 +22,7 @@ export const reqSmsLogin = (phone, code) => ajax(BASE_URL+'/login_sms', {phone, 
 // 9、根据会话获取用户信息
 export const reqUserInfo = () => ajax(BASE_URL+'/userinfo')
 // 10、用户登出
-export const reqLogout = () => ajax(BASE_URL+'/logout')
+export const reqLogout = () => ajax(BASE_URL+'/logout')   
 
 /**
  * 获取商家信息

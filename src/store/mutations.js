@@ -12,6 +12,7 @@ import {
   INCREMENT_FOOD_COUNT, 
   DECREMENT_FOOD_COUNT,
   CLEAR_CART,
+  RECEIVE_SEARCH_SHOPS
 
 } from './mutations_types'
 export default{
@@ -81,5 +82,9 @@ export default{
     state.cartFoods = []
   },
   
+  [RECEIVE_SEARCH_SHOPS](state,{searchShops}){
+    state.searchShops = searchShops
+  },
+
 
 }
